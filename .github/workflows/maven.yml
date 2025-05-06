@@ -5,14 +5,14 @@ on:
     branches: [ Hitesh_API_Automation ]
   pull_request:
     branches: [ Hitesh_API_Automation ]
+  workflow_dispatch:  # 👈 This allows manual triggering from GitHub UI
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Checkout code
       uses: actions/checkout@v3
 
     - name: Set up JDK 17
@@ -22,4 +22,4 @@ jobs:
         distribution: 'temurin'
 
     - name: Build with Maven
-      run: mvn clean verify
+      run: mvn clean install
